@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="icon" type="image/x-icon" href="img/pokemon-g15e4965b4_640.png">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/types.css">
+</head>
+
+<body onload="initializeApp()">
+    <header class="header">
+        <a href="index.html">
+            <img class="logo" src="img/pokemon-logo-png-1428.png" alt="pokemon-logo">
+        </a>
+        <div class="input-section">
+            <input id="search-input" type="text" placeholder="Ex: Charizard or 006">
+            <button id="reset-search" class="reset-btn">x</button>
+        </div>
+    </header>
+
+
+    <div class="dropdown-section">
+        <button class="dropdown-btn">Not looking for anything in particular? Browse our lists …</button>
+        <div class="dropdown-content" id="select"></div>
+    </div>
+
+    <div id="menu-container">
+        <div id="menu-items">
+            <span id="allTypesLink">Types</span>
+            <span id="searchLink" class="link">Search</span>
+            <span onclick="loadAllPokemon(), toggleMenu()">Pokedex</span>
+            <span onclick="toggleMenu()">Close</span>
+        </div>
+        <button id="toggle-button" class="toggle-button" onclick="toggleMenu()">+</button>
+        <div id="overlay"></div>
+    </div>
+
+    <div id="pokedex"></div>
+
+    <div id="background" class="d-none"></div>
+    <div id="pokemon-details"></div>
+
+    <a class="href hide" id="arrow" href="#"><img class="arrow" src="img/arrow.png"></a>
+
+    <footer>
+            <a target="_blank" href="https://icons8.com/icon/cf5VAHkQsmvA/pok%C3%A9ball">Pokéball</a> icon by
+            <a target="_blank" href="https://icons8.com">Icons8</a>
+            Image by
+            <a target="_blank" href="https://pixabay.com/users/hsaart-8633812/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023">Harisankar Sahoo</a>
+            from
+            <a target="_blank" href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4657023">Pixabay</a>
+            <a target="_blank" href="http://www.onlinewebfonts.com">oNline Web Fonts</a>
+    </footer>
+    
+    <script src="js/events.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
