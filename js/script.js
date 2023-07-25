@@ -531,39 +531,61 @@ async function getFlavorTexts(pokemonName) {
 
 // Findet den Flavour-Text basierend auf dem Index in den Flavour-Text-Einträgen
 function findFlavorTextByIndex(flavorTextEntries, index) {
+    let flavorText = '';
+
     for (let i = 0; i < flavorTextEntries.length; i++) {
         let flavorTextEntry = flavorTextEntries[i];
         if (flavorTextEntry.language.name === 'en' && i === index) {
             return flavorTextEntry.flavor_text;
         }
     }
-    return '';
+    return flavorText;
 }
 
 
 // Fetcht die Evolutionskette eines Pokémon aus der API
+// async function getPokemonEvolution(pokemonName) {
+//     let url = `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`;
+//     let response = await fetch(url);
+
+//     if (response.status === 404) {
+//         return { pokemon: null, evolutionChain: null }; // Setze einen Standardwert, wenn das Pokémon nicht gefunden wurde
+//     }
+
+//     let data = await response.json();
+//     let evolutionChainUrl = data.evolution_chain.url;
+//     let evolutionChainResponse = await fetch(evolutionChainUrl);
+
+//     if (evolutionChainResponse.status === 404) {
+//         return { pokemon: data, evolutionChain: null }; // Setze einen Standardwert, wenn die Evolutionskette nicht gefunden wurde
+//     }
+
+//     let evolutionChainData = await evolutionChainResponse.json();
+
+//     return {
+//         pokemon: data,
+//         evolutionChain: evolutionChainData
+//     };
+// }
+
 async function getPokemonEvolution(pokemonName) {
-    let url = `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`;
-    let response = await fetch(url);
+    try {
+        let url = `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`;
+        let response = await fetch(url);
+        let data = await response.json();
 
-    if (response.status === 404) {
-        return { pokemon: null, evolutionChain: null }; // Setze einen Standardwert, wenn das Pokémon nicht gefunden wurde
+        let evolutionChainUrl = data.evolution_chain.url;
+        let evolutionChainResponse = await fetch(evolutionChainUrl);
+        let evolutionChainData = await evolutionChainResponse.json();
+
+        return {
+            pokemon: data,
+            evolutionChain: evolutionChainData
+        };
+    } catch (error) {
+        // Fehler abfangen, z.B. wenn die Pokémon-Daten oder Evolutionskette nicht gefunden werden können
+        return { pokemon: null, evolutionChain: null };
     }
-
-    let data = await response.json();
-    let evolutionChainUrl = data.evolution_chain.url;
-    let evolutionChainResponse = await fetch(evolutionChainUrl);
-
-    if (evolutionChainResponse.status === 404) {
-        return { pokemon: data, evolutionChain: null }; // Setze einen Standardwert, wenn die Evolutionskette nicht gefunden wurde
-    }
-
-    let evolutionChainData = await evolutionChainResponse.json();
-
-    return {
-        pokemon: data,
-        evolutionChain: evolutionChainData
-    };
 }
 
 

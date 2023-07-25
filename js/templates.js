@@ -213,6 +213,13 @@ function generateAdditionalInfoHTML(currentPokemon) {
     let weightInKilograms = (currentPokemon.weight / 10).toFixed(1);
     let baseExperience = currentPokemon.base_experience !== null ? currentPokemon.base_experience : '-';
 
+    // let baseExperience;
+    // if (currentPokemon.base_experience !== null) {
+    //     baseExperience = currentPokemon.base_experience;
+    // } else {
+    //     baseExperience = '-';
+    // }
+
     let additionalInfoHTML = `
         <div class="additional-info">
             <div class="add-info">
