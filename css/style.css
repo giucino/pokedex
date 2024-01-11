@@ -488,8 +488,8 @@ body {
     border-right: solid 1px white;
     border-left: solid 1px white;
     border-bottom: solid 1px white;
-    height: 100%;
-    overflow-y: scroll;
+    /* height: 100%; */
+    /* overflow-y: scroll; */
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 }
